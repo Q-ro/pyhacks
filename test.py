@@ -4,7 +4,7 @@
 ###
 import random
 
-def PickNumber(ramgeStart, rangeEnd):
+def PickNumber(rangeStart, rangeEnd):
 	return random.randint(rangeStart,rangeEnd)
 
 def ValidateDifficulty ():
@@ -33,14 +33,20 @@ it\'s good that you want to waste time.\n''')
 
 def GuessNumber(number):
 	gameNotOver = False
-	while gameNotOver:
+	while not gameNotOver:
 		try:
-			guess = int(input('Tell me your guess')
+			guess = int(input('Tell me your guess'))
 		except ValueError:
-			print('That\'s not even a number'
+			print('That\'s not even a number')
+			continue
 		else:
 			if guess == number:
 				print('You did it !')
+				gameNotOver = True
+			elif guess > number:
+				print('The number is smaller')
+			elif guess < number:
+				print('The number is bigger')
 
 guessing = True
 guessedCorrectly = False
@@ -62,3 +68,4 @@ else:
 	print('''I don\'t know how you did it, but this is not a valid 
 option, to the corn field with you !''')
 
+GuessNumber(numberToGuess)
